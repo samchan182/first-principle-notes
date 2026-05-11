@@ -373,6 +373,10 @@ e.g.
 ## Will user prompt leaves evidence in LLM?
 NO. After one open source model is being trained, the weights file is fixed. The only possible to leave user privacy is through chat history. How your LLM provider save the input and output. 
 
+## What's multi-agent?
+A framework where multiple autonomous agents interact within shared environment to achieve goal. 
+
+Why? Cause multi-agent system works better than single-agent system. (unity is strength !!!)
 
 
-
+??? will it makes the task-solving process pretty slow when waiting for multi-agent to respond. ???
