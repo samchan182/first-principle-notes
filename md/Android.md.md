@@ -1,5 +1,12 @@
 # Android
 
+## Goal of android architecture?
+- architecture must be consistent. The identical code which's reliable for extend feature A,B,C,...
+- Divide the jobs into layers. Easy to fix bug. 
+- Make your app easy to test. 
+- Stay open for architecture choice. Some structure might be better for one situation.
+- Simplicity over complicity.
+
 ## Android Studio windows scope selector?
 In android studio, there are multiple scope selector, "Project, Android, Project File, ..etc" 
 
@@ -48,6 +55,9 @@ Those XML need to work with Kotlin in order to present UI automation. XML define
 2. `domain/` — pure business logic, no Android imports, no network code (use cases, agent orchestration rules)
 3. `data/` — how data is fetched and stored (HTTP clients, databases, API definitions, parsers)
 
+![image](/md\tech-notes\res\image\ScreenShot_2026-05-15_094710_877.png)
+it's Google recommend app architecture
+
 - `data/`-- How to get the data?
 
 - `domain/`-- How to deal with those data?
@@ -70,6 +80,8 @@ Google itself recommends MVVM(Model-View-ViewModel) as the official android arch
 - `model`, where is your data?
 - `view`, what shows to user?
 - `viewmodel`, combined both and show to user
+
+`ViewModel` is like a middleman, transfer data between `model` and `view`. 
 
 ## What is 'di' and 'utils' folder used for?
 You can deprioritize those two folders in default structure
@@ -128,3 +140,19 @@ All the content shown is from Kotlin,
 kotlin is compiled by JVM, so if you want to use LangChain to construct the API call interface, it won't work. 
 
 Use the conventional OkHttp call will work. 
+
+## Which database mobile app will choose?
+The most used database is Android App is SQLite. 
+
+## Will Gradle compile in mobile?
+No, gradle as a building tool only runs on development machine, your laptop or PC. 
+
+It has zero involvement once APK is built. Phone runs app doesn't need Gradle.  
+
+## Environment setting in android dev?
+3 things must be identical:
+
+- gradle wrapper version
+- JDK version
+- SDK version (software development kit)
+
