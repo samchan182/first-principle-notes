@@ -15,21 +15,21 @@ The hardware is reliable on billions of transistors
 - Current is off, means 0
 
 ## The Six role families
-![image](images\02.png)
+![image](images/02.png)
 
 ### Software engineering
-- [FrontEnd](SoftwareEng\FrontEnd.md)
-- [BackEnd](SoftwareEng\BackEnd.md)
-- [Mobile](SoftwareEng\Mobile.md)
-- [System Architecture](SoftwareEng\systemArchitect.md)
+- [FrontEnd](SoftwareEng/FrontEnd.md)
+- [BackEnd](SoftwareEng/BackEnd.md)
+- [Mobile](SoftwareEng/Mobile.md)
+- [System Architecture](SoftwareEng/systemArchitect.md)
 
 ### Data & AI
-- [AI](Data&AI\AI.md)
+- [AI](Data&AI/AI.md)
 
 
 ### Infrastructure & ops
-- [DevOps](Infra&Ops\DevOps.md)
-- [OS](Infra&Ops\OS.md)
+- [DevOps](Infra&Ops/DevOps.md)
+- [OS](Infra&Ops/OS.md)
 
 ### Security
 - [N/A]()
