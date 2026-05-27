@@ -1,6 +1,5 @@
 # Where everything starts
 
-## What is it?
 This note follows the **semantic tree hierarchical structure**, that organizes concepts by their meaning and relationship, moving from core fundamentals to fine details. 
 
 Same idea applies to First Principle Thinking. It reasons everything up from the more fundamental truths.
