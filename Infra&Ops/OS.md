@@ -1,8 +1,5 @@
 # OS
 
-Kernel Dev
-
-
 ## Difference between Mac User folder & Macintosh HD?
 Macintosh HD is your whole computer physical hard drive. Everything that stores in your laptop. 
 

@@ -5,6 +5,11 @@
 > [!IMPORTANT]
 > Document learnings in a Q&A format.
 
+## What's 2nm means in semiconductor industry?
+The latest frontier in microchip manufacturing. 
+
+The physical size of smallest feature. 
+
 ## Scientific way to approach AI coding?
 `Optimize Problem`-->`Write down your own solution`-->`Use AI tool for help`-->`Compare solution`
 

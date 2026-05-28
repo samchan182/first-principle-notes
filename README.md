@@ -5,14 +5,16 @@ This note follows the **semantic tree hierarchical structure**, that organizes c
 Same idea applies to First Principle Thinking. It reasons everything up from the more fundamental truths.
 
 ![image](images/03.png)
-<div align="center"><small>Sentiment Tree and RNTN Prediction, Socher et al, 2013</small></div>
+<div align="center"><small>Source: AI generated, better understanding</small></div>
 
 ### Why we need computer?
+---
 Human hardware is so insufficient and slow. 
 
 Human being are so weak in computing and memory. For example, if we need to do `199 X 577`, we need at least 30 second to solve, but for computer, it only takes 3ms.
 
 ### Why computer has to be binary?
+---
 Cause it is the reliable way to run computation by electricity in physics. 
 
 Of cause, there is computer using Ternary, but it is unstable. 

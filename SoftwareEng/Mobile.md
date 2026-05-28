@@ -1,4 +1,12 @@
-# Android
+# Mobile
+
+## What's Mobile OS?
+A piece of software manage small hardware. 
+
+THe difference between desktop OS and mobile OS, also due to the difference of its hardware. For example, the desktop has larger battery. 
+
+## What's major mobile OS?
+Android and IOS
 
 ## Goal of android architecture?
 - Architecture must be consistent. No fail.
