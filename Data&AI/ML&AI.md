@@ -1,7 +1,7 @@
 ## What's machine learning?
 It's a branch of computer science, in order to solve the problem of hardcoded rule.
 
-Instead of using millions line of `if-else`, it uses mathematical objective function + large dataset. 
+Instead of using millions line of `if-else`, it uses mathematical objective function & large dataset. 
 
 It uses the algorithm based on calculus and linear algebra, to adjust internal parameters.
 

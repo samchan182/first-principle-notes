@@ -1,5 +1,10 @@
 # OS
 
+## What's license?
+A legal document, the declaration of the ownership. 
+
+It's a permission slip, the set of rules created by the owner. 
+
 ## Difference between Mac User folder & Macintosh HD?
 Macintosh HD is your whole computer physical hard drive. Everything that stores in your laptop. 
 
@@ -40,7 +45,7 @@ The mini-OS starts with 512-byte real-mode boot block, then switches the CPU int
 
 
 ## X86
-AS intel chip nickname for chip series ended in “86” (8086, 80286, …), each chip has 16-bit registers, right after with 32-bit, and right now is 64-bits, like “x86-64”. A CPU has the pre-set operation (like addition, subtraction,…), in terms of CPU design, the circuits is to execute those operations. It is the field of processor design. CPU Register is a location where to store the ready-load data for RAM. There are 5 main components in CPU design, arithmetic logic unit (ALU)算数逻辑单元, control unit(CU), memory unit, registers, clock. 
+AS intel chip nickname for chip series ended in“86” (8086, 80286, …), each chip has 16-bit registers, right after with 32-bit, and right now is 64-bits, like“x86-64”. A CPU has the pre-set operation (like addition, subtraction,…), in terms of CPU design, the circuits is to execute those operations. It is the field of processor design. CPU Register is a location where to store the ready-load data for RAM. There are 5 main components in CPU design, arithmetic logic unit (ALU) 算数逻辑单元，control unit(CU), memory unit, registers, clock. 
 
 ## OS
 Once the boot loader has configured system, and located the OS kernel, it will transfer the control to OS. The M1 Mac is using Apple M1 chip, and its ARM framework, which’s different from x86 by instructions set architecture(ISA). (Those commands computer’s CPU can understand and execute) 
@@ -97,7 +102,7 @@ GDT is used by CPU to obtain all information, and located in RAM. It stores the 
 ## Transitioning to protected mode(32-bit mode)
 Because, in real mode, there is limitation of 16-bit registers, 1 MB memory, so boot loader will transition the CPU into protected mode. The boot loader will switch the CPU into Protected Mode, after that load the OS kernel into RAM. RAM is a workspace for both boot loader and OS Kernel. 
 
-Protected mode, it’s also called protected virtual memory mode, specially for x86 architecture. It uses for system security, and enable features(like multitasking, virtual memory…). Sometimes, when you use the address of descriptor and actual start memory is not right next to (maybe it’s 8 bytes further than starting address), so you need to ‘MOV’ the descriptor to target memory location to get start the program, that’s we called ‘Offset’, or ‘Segment Offset’ （移量）. 
+Protected mode, it’s also called protected virtual memory mode, specially for x86 architecture. It uses for system security, and enable features(like multitasking, virtual memory…). Sometimes, when you use the address of descriptor and actual start memory is not right next to (maybe it’s 8 bytes further than starting address), so you need to‘MOV’the descriptor to target memory location to get start the program, that’s we called‘Offset’, or‘Segment Offset’ （移量）. 
 
 Also, the reason why we start at ‘0x7c00’, is because it’s the early standard convention established in x86 architecture. 
 
@@ -110,7 +115,7 @@ We use QEMU as the emulator and virtualizer in virtual environment (virtual memo
 
 
 ## Enable the A20 line / Setting up the GDT
-While the boot loader start the protected mode, because the 8086 architecture (x86 is an extension) only have 20 bits address bus, meaning has line A0 - A19, 1 MB = 2*20 bytes, A20 refers to the 21st address line on processor’s bus.  （In computer architecture, the bus means the highway for transferring data between each components总线）
+While the boot loader start the protected mode, because the 8086 architecture (x86 is an extension) only have 20 bits address bus, meaning has line A0 - A19, 1 MB = 2*20 bytes, A20 refers to the 21st address line on processor’s bus.  （In computer architecture, the bus means the highway for transferring data between each components 总线）
 
 Layout asm, is a command in GDB tool to debug the low-level code. 
 
@@ -266,7 +271,7 @@ Up to 51 section, but as long as the code is right, there is debug in building.
 
 
 
-逆向思维去debug 结果output导向
+逆向思维去 debug 结果 output 导向
 
 
 

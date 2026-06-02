@@ -37,6 +37,7 @@ The hardware is reliable on billions of transistors
 
 
 ### Infrastructure & ops
+- [Cloud](Infra&Ops\Cloud.md)
 - [DevOps](Infra&Ops/DevOps.md)
 - [OS](Infra&Ops/OS.md)
 
