@@ -5,6 +5,11 @@ A legal document, the declaration of the ownership.
 
 It's a permission slip, the set of rules created by the owner. 
 
+## What is image?
+A blueprint / snapshot of how to organize massive 1 and 0 on hard drive. 
+
+Specifically when copy large files from one device to another. 
+
 ## Difference between Mac User folder & Macintosh HD?
 Macintosh HD is your whole computer physical hard drive. Everything that stores in your laptop. 
 

@@ -52,6 +52,31 @@ Inside the VM cli, only use git pull, not git push.
 
 It's another computer running Linux OS. Also never edit your code directly on VM. 
 
+## What is docker?
+To maintain the prefect environmental synchronization. For example, if your VM installed package version is 1.5, but your local is version 1.2, then the application will crash
+
+Docker is built for standardize the environment. It is an open-source platform for you to deliver (`build, test, ship, run`) software quickly. Which allows you to run your application on the single, sealed packaged called a `container`. 
+
+## How to decide whether you need docker?
+It depends on the requirements. 
+
+- What are our deployment and reproducibility requirement?
+
+docker is worth it when your software is long and fragile. 
+
+If you application is a ready-used package, you don't need docker to do this. 
+
+## How to decide automation patter by GitHub?
+You push to git, then the robot/github action build and deploy automatically. The server is one-time setup. 
+
+Most dev team does that way, the git push triggers an automation pipeline. 
+
+## How to deploy?
+Most professional teams insert one extra step: the pipeline packages the JAR into a container image, pushes that image to a registry, and deploys it onto a container platform — Kubernetes, ECS, or Cloud Run. 
+
+So for most teams the flow is: push → CI builds → builds a container image → deploys the image to a container platform → live.
+
+
 ## What is ECS?
 ECS is one of the serval ways to run container on AWS.
 
