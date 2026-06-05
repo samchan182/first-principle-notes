@@ -420,3 +420,6 @@ Spring Boot acts the intelligence brain to decide which data needs to cache. And
 
 Redis has no idea what you application does.
 
+![image](/images/06.png)
+
+## 

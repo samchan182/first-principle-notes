@@ -19,6 +19,12 @@ Let's take the largest cloud provider AWS as an example (2026), they divide the 
 
 One region have multiple data center clusters running called the Available Zone (AZs). For example, `us-east-1` is the region, and `us-east-1a`,`us-east-1c`, those are available Zone. 
 
+In most dev team, to choose which region as their cloud computer are:
+- legal. Need to follow local data law
+- Hardware availability. The physical hardware
+- The cost. Whether it's expensive or cheap
+- Distance. Latency, take too long to respond. 
+
 ## Why using VM?
 Since the cloud provider can not actually give you the whole piece of hardware, then it gives you a software-based computers called Virtual Machines (VMs)
 
@@ -36,7 +42,16 @@ Secure Shell(SSH), cryptographic network protocol. To secure the connection betw
 - Directly edit on web terminal is fraglie to whole vm
 - Hard to transfer data to VMs
 
-Nobody use cloud's console's web terminal for daily development. 
+*Nobody use cloud's console's web terminal for daily development*
+
+## The enterprise cloud architecture?
+The modern enterprise design architecture differently. 
+
+They will use a lightweight agent to run inside the cloud, and establish a outbound connection to secure gateway. 
+
+![image](/images/05.png)
+
+The cloud firewall will block 100% of all inbound traffic. 
 
 ## Why SSH connection need port?
 Under the law of physics, when you sent signal through internet, it arrives to VM as raw electrical signals.
@@ -52,11 +67,6 @@ Inside the VM cli, only use git pull, not git push.
 
 It's another computer running Linux OS. Also never edit your code directly on VM. 
 
-## What is docker?
-To maintain the prefect environmental synchronization. For example, if your VM installed package version is 1.5, but your local is version 1.2, then the application will crash
-
-Docker is built for standardize the environment. It is an open-source platform for you to deliver (`build, test, ship, run`) software quickly. Which allows you to run your application on the single, sealed packaged called a `container`. 
-
 ## How to decide whether you need docker?
 It depends on the requirements. 
 
@@ -66,21 +76,95 @@ docker is worth it when your software is long and fragile.
 
 If you application is a ready-used package, you don't need docker to do this. 
 
-## How to decide automation patter by GitHub?
+## How to decide automation patter by using GitHub (CI/CD)?
 You push to git, then the robot/github action build and deploy automatically. The server is one-time setup. 
 
 Most dev team does that way, the git push triggers an automation pipeline. 
 
-## How to deploy?
+For example, when github action being triggered by `push main`, then it build the JAR file, and push to cloud VM.
+
+Now, old JAR will disable, then new JAR will continue sit on given port (PORT 3000), to listen new request.
+
+## How to deploy (CI/CD)?
 Most professional teams insert one extra step: the pipeline packages the JAR into a container image, pushes that image to a registry, and deploys it onto a container platform — Kubernetes, ECS, or Cloud Run. 
 
 So for most teams the flow is: push → CI builds → builds a container image → deploys the image to a container platform → live.
 
+## What is containerization?
+It's `OS level virtualization`. It's a practice to bundling an application all together. 
+
+![image](/images/07.png)
+
+## What is Docker?
+It's a suite of software products, created by a company called Docker. Inc. It's the first tool to make containerization accessible, people somehow say it 'dockerize'.
+
+## Problems Docker can solve?
+To maintain the prefect environmental synchronization. For example, if your VM installed package version is 1.5, but your local is version 1.2, then the application will crash
+
+Docker is built for standardize the environment. It is an open-source platform for you to deliver (`build, test, ship, run`) software quickly. Which allows you to run your application on the single, sealed packaged called a `container`. 
 
 ## What is ECS?
-ECS is one of the serval ways to run container on AWS.
+ECS (Amazon Elastic Container Service) is one of the serval ways to run container on AWS.
 
+## Standards connection between mobile and cloud?
+The working relationship will be `Client-Server model`
 
+They need to share the same language of communication, which is API. 
 
+The data is packaged into a lightweight format, the common one is JSON (JavaScript Object Notation). It's like a physical letter is delivered by postman. 
 
+## What's TCP connection?
+It's a logical solution to handle physical hardware. 
 
+Electrons travels through copper wires, or another way is photons being shooted through fiber optic cables.
+
+## What's ip address and port?
+IP address is like the address on internet. Cloud is just a large-sliced computer, it has its onw ip address. 
+
+The port is like door, a virtual connection point. It's like a multiple gate on a large, massive building. 
+
+It's regulated by building owner, decide who can come in or who's not. 
+
+## How software being deployed on cloud?
+In old way, you drop a single software on cloud, which's a large-sliced computer, the problem arises when lack of correct version of all kinds of library. 
+
+In modern solution, engineer bundles all the libraries, extern files all in one single package. Make use execute accurately.
+
+That's why you see not more then JAR file, other different files are being sent to cloud by a single package. 
+
+## How to setup safeguard when someone access to your vm port?
+- `The public can not find that 'door'.` For example, like most cloud provider, they use built-in network firewalls. Sit outside the VM and block unauthorized traffic. TO restrict the port access.
+- `Since signal arrived, prove has right to enter.` For example, use password or cryptographic keys (like SSH).
+-  `Monitoring who knocks the door.` For example to use a software called Fail2Ban, it monitors the server's entry log. 
+-  `Move the door.` To avoid using common port on internet.
+
+## Why many server use port 22?
+It's a global standard for SSH. There is historical reason back to 1995 for secure reason to set port 22, therefore, the global convention is born.
+
+Most server is Linux based, and SSH is defaults to port 22.
+
+If you set your server out of port 22, then it can avoid internet noise. Many hacker random try to access port 22, cause they know it's convention. 
+
+## What if public direct access to cloud?
+- No TLS. It's transport layer security, a cryptographic protocol designed to provide private communication. Between local and cloud, they do the math to agree on secret language to protect the tunnel where data is travels
+- No Rate Limiting. You can let stranger to access 1000 times pre mins. 
+
+## What is JWT?
+JSON Web Token. It's an unforgettable card. 
+
+The internet is series of physical cables and routers owned by strangers. JWT is like a VIP wristband, to have the authority to access this place 
+
+To use JWT without TLS, it's dangerous. 
+
+## What is Nginx?
+A lightweight to protect the connection between local and cloud. 
+
+The application inside cloud is using 'loopback' address (127.0.0.1:3000), it can only be accessed request inside the cloud. 
+
+Nginx put the public traffic into TLS first, a safe communicate tunnel. Also enforces rate limits, once verifies it's safe, then knocks the door 127.0.0.1:3000.
+
+## why we need domain name instead of public ip?
+- For convenience. When you access Google, instead of 198.XXX.XXX.XXX
+- Stamp of trust. it's identity, not location. Even under laws of physics, it's actually an ip address. 
+
+## 
