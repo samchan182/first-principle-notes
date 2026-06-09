@@ -167,4 +167,7 @@ Nginx put the public traffic into TLS first, a safe communicate tunnel. Also enf
 - For convenience. When you access Google, instead of 198.XXX.XXX.XXX
 - Stamp of trust. it's identity, not location. Even under laws of physics, it's actually an ip address. 
 
-## 
+## How to evaluate container implementation?
+The Docker container is to set up an isolated wrapper around one or more program. So it really depends on the consistency of env variable.
+
+For example, if one program needs specific packages, then put it into single container. 

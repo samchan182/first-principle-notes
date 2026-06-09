@@ -11,17 +11,27 @@ It uses the algorithm based on calculus and linear algebra, to adjust internal p
 
 ## What's LLM?
 
-## What are agents?
+## Agents & Workflows
+Anthropic describes as agentic systems.
+
+- **Workflows** is a systems where LLM and tools are being orchestrated by predefined code.
+- **Agents**, are systems where LLMs direct their own process and tool usage.  
+
+If the whole system is predefined, then it's workflows; if the whole system is driven by LLMs, then it's agents. 
+
+An AI system that use LLM as core engine to auto-use all kinds of tool(api, search, interrupts,..etc) to achieve the goal.
+
+The Anthropic report, *building effective agents*, ... 
 
 ## What's 2nm means in semiconductor industry?
 The latest frontier in microchip manufacturing. 
 
 The physical size of smallest feature. 
 
-## Scientific way to approach AI coding?
+## Scientific way to approach AI coding
 `Optimize Problem`-->`Write down your own solution`-->`Use AI tool for help`-->`Compare solution`
 
-## Docstrings or Comment?
+## Docstrings & Comment
 Comment is for developer<br>
 Docstrings is for user of this code/function <br>
 Never use __(''')__, it will create unnecessary memory
@@ -39,18 +49,6 @@ When you need to install, it's library (pip install transformers), when you need
 ## Will Python code change by environment?
 No! python code does not change the code based on environment. Different environment means the <u>availablility of packages</u> changes.<br>
 The only difference is the package installation. 
-
-## What's Agent?
-An AI system that use LLM as core engine to auto-use all kinds of tool(api, search, interrupts,..etc) to achieve the goal. 
-
-While agent is doing tool-calling loop, the environment need to be concern. 
-
-## What's difference between Workflow and Agent?
-Workflow is set of fixed steps OR predefined code
-
-Agent is LLM directs its own actions based on tools, which's provided by environment. 
-
-Therefore, calling tool is super important in agent (BFCL leaderboard is llm ability of calling tool in loop)
 
 ## Why use .env file to store API key?
 A .env file is used to store sensitive information like API keys securely. It should be added to .gitignore so it is not included in version control.
