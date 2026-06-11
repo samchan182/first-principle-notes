@@ -14,6 +14,28 @@ They will run a software in large machine, 'slice' it, make it into one fake com
 
 ![image](/images/04.jpg)
 
+## Internet & Location & Regulation
+Company go for Domain Registrar, to claim '*I'm the person who own this name (google.com*). Domain registrar is doing the job to manage the registration of domain name, it will claim it globally. Then goes to DNS server (*'if you want to know the IP, go ask Cloudflare*).
+
+When you browser is typing into a domain (like google.com), meanwhile, your computer is a device only sending electrical signal by optical fiber, it needs one thing called IP address(106.54....) to know which server you ask for data. 
+
+Some companies offer service to translate the domain name into IP address, it called DNS service, suck company like Cloudflare. 
+
+The server you ask data for is actually a massive computer running 24hrs, it needs to have a physical space which's called data center. In China, there's ICP filing, to regulate whether the server is allowed to serve website to public. If the ICP filing is checked, meaning the physical location of the server is legal to serve you with a business license. 
+
+As long as your device send the request signal to server, your message will go across all the internet, bypass someone's computer as well. You have to encrypt the connection otherwise anyone on the public internet knows what's inside in your request. The SSL/TLS certificate is doing encryption  and identity to solves those two problems. 
+
+![images](/images/08.png)
+
+The application will ask data from server by dialing the domain name, not by ip address. The ip and port is resolved underneath. 
+
+## Domain name & Safety
+Once you bought a name from domain registrar, you own the entire namespace beneath it. You can have a.c.v at front if you want. 
+
+Also you control the DNS, which domain name can points to our VM ip. 
+
+The last guard is the nginx, if you are not the domain name in certificate card, then you are in the wrong place. 
+
 ## How to choose your machine?
 Let's take the largest cloud provider AWS as an example (2026), they divide the world as each Region geographically.
 
@@ -44,6 +66,13 @@ Secure Shell(SSH), cryptographic network protocol. To secure the connection betw
 
 *Nobody use cloud's console's web terminal for daily development*
 
+## IP in VM
+`0.0.0.0` means it listens on every network interface, reachable from anywhere
+
+`127.0.0.1` means it only can be reachable from inside this machine. 
+
+`172.16.0.0/12`  is a UFW firewall rule — it only restricts which source addresses are allowed to connect to those ports (the docker bridge network range).
+
 ## The enterprise cloud architecture?
 The modern enterprise design architecture differently. 
 
@@ -60,12 +89,39 @@ The physical server has lots of processing running together, the OS uses PORT to
 
 Master owner create this hidden doorway outside the server, which is waiting the incoming traffic. 
 
+## The port 80
+It's the default setting by tech convention. Because when user type google.com on browser, it doesn't type `HTTP` or `HTTPS`, so browser doesn't know whether it is secured connection or not. 
+
+So by default, it will reach to port 80 at the first place. And nginx will 
+
 ## Structure of local & VMs & GitHub?
 `Local desktop  ──push──►  GitHub  ◄──pull──  Cloud VM`
 
 Inside the VM cli, only use git pull, not git push. 
 
 It's another computer running Linux OS. Also never edit your code directly on VM. 
+
+## Gated Pattern
+It's a patter designed to set the security to handle incoming traffic.
+
+e.g Two-GATED model
+
+`Internet → [Gate 1: Cloud console firewall] → [Gate 2: ufw on the VM] → service`
+
+
+## Reverse Proxy / Edge Servers
+It's a tool to handle the incoming client request, then route them to backend application server
+
+Most used tool is AWS Elastic Load Balancing (ELB/ALB), accounts for 60-70% of market shares.
+
+## Nginx & Certbot in SSL/TLS
+Nginx is the host which is like a safeguard secure your front door. 
+
+When the URL asking sent to VM, the nginx will differentiate whether it can pass. Because the internet connection need SSL/TLS security handshake, the certbot is a tool to provide certificate files to nginx.
+
+Certbot only run once and never show up again. The VM will show the certificate to the Visitor (request), the visitor will look at the certificate, *is it the name i dial is on this card?* If yes, the secure channel open. 
+
+Image the request or call is a person who's urge to find the office in the city, it knows the location of the building, but doesn't know which floor it needs to go. So it sees the info card provide by security guard. 
 
 ## How to decide whether you need docker?
 It depends on the requirements. 
