@@ -422,4 +422,16 @@ Redis has no idea what you application does.
 
 ![image](/images/06.png)
 
-## 
+## Redis debug?
+Redis is mostly set-and-forget in industry. 
+
+You only go check it when something feel wrong, like slow respond, stale data, memory pressure. 
+
+Your application will talk to redis, don't have to worry about it. 
+
+If you need a test, launching a new feature that heavily need cache, unless you see the old data, then ignore. 
+
+In industry, use 
+- Prometheus + Redis Exporter + Grafana (Those tools are for monitoring and altering)
+- APM
+- Alerts

@@ -14,6 +14,13 @@ They will run a software in large machine, 'slice' it, make it into one fake com
 
 ![image](/images/04.jpg)
 
+## What is ICP?
+Internet Content Provider. It's a regulatory permit unique to mainland China. 
+
+It is asking you 
+
+`Does physcial cloud provider has legal permit to provide cloud service to the public?`
+
 ## Internet & Location & Regulation
 Company go for Domain Registrar, to claim '*I'm the person who own this name (google.com*). Domain registrar is doing the job to manage the registration of domain name, it will claim it globally. Then goes to DNS server (*'if you want to know the IP, go ask Cloudflare*).
 
@@ -30,7 +37,7 @@ As long as your device send the request signal to server, your message will go a
 The application will ask data from server by dialing the domain name, not by ip address. The ip and port is resolved underneath. 
 
 ## Domain name & Safety
-Once you bought a name from domain registrar, you own the entire namespace beneath it. You can have a.c.v at front if you want. 
+Once you bought a name from domain registrar, you own the entire namespace beneath it. You can have a.c.v at front / back if you want. 
 
 Also you control the DNS, which domain name can points to our VM ip. 
 
