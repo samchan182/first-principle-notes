@@ -1,25 +1,10 @@
-# Mobile
+# Android-Dev
 
-## What's Mobile OS?
-A piece of software manage small hardware. 
+Whole instructions page
 
-THe difference between desktop OS and mobile OS, also due to the difference of its hardware. For example, the desktop has larger battery. 
+[How to build an Android App](/article/How-to-built-Android-App.md)
 
-## What's major mobile OS?
-Android and IOS
 
-## Goal of android architecture?
-- Architecture must be consistent. No fail.
-- Divide the jobs into layers. Easy to fix bug and debug.
-- Stay open for architecture choice. Some structure might be better for one situation.
-- Simplicity over complicity.
-
-## Android Studio Scope Selector?
-In android studio, there are multiple scope selector, "Project, Android, Project File, ..etc" 
-
-They all refer to the same folder, but showing a different lens/view to developer for specific jobs. 
-
-If you need to code on kotlin, better using Android View. If you need to check the file structure, better using Project View. 
 
 ## Which file is blueprint for OS in Android APP?
 The system will read the `AndroidManifest.xml` first, it's the root of app's package, without this file, the OS has no idea of what app's contains, and how to run. 
@@ -76,44 +61,7 @@ Android Studio just gives you smart previews for that XML file.
 
 Those XML need to work with Kotlin in order to present UI automation. XML defines the static skeleton. Kotlin handles dynamic, behavioral, and data logic. 
 
-## What's three parts in macro-layer of Android?
-1. `presentation/` — anything the user sees or touches (Activities, Fragments, Dialogs, ViewModels)
-2. `domain/` — pure business logic, no Android imports, no network code (use cases, agent orchestration rules)
-3. `data/` — how data is fetched and stored (HTTP clients, databases, API definitions, parsers)
 
-it's Google recommend app architecture
-
-- `data/`-- How to get the data?
-
-- `domain/`-- How to deal with those data?
-
-- `presentation/`-- How we present to user?
-
-In most examples, in kotlin + Java section,
-UI Layer           →    presentation/
-Domain Layer       →    domain/
-Data Layer         →    data/
-
-The core of Android App dev, only 3 things
-1. shows stuff to user (UI part)
-2. Decides what to do with input (Business Rules)
-3. Get/saves data (network, database, files)
-
-## What's MVVM?
-Google itself recommends MVVM(Model-View-ViewModel) as the official android architecture. It's the standard pattern for organizing user view (The '/presentation' layer)
-
-![image](../images/00.png)
-
-- `model`, where is your data?
-- `view`, what shows to user?
-- `viewmodel`, combined both and show to user
-
-`ViewModel` is like a middleman, transfer data between `model` and `view`. 
-
-The files
-1. The View (IndexFragment.kt), pure display which is connectes to the XML layout, display when data in and out. 
-2. The ViewModel(IndexViewModel.kt), the bridge between you presenting UI, and backend database
-3. The State (AssetUiState.kt),defining the boundaries and rules of screen
 
 ## What is di and utils folder?
 You can deprioritize those two folders in default structure
