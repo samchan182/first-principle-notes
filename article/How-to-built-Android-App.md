@@ -1,8 +1,22 @@
 # What We Should Know?
-We usually use Android Studio IDE to develop our android mobile. Because it provides environment of emulator of mobile application. 
+Android mobile app can be written by Kotlin, Java, C++. Android SDK tool will compile your code, combined with any resource into APK(.apk) / Android App Bundle(.aab). 
 
-Android Bundle means everything an application need to build an actual APP. 
+- APK uses to install android-power devices.
+- AAB refers to archive file. 
 
+Some important components of Android files in this doc. 
+https://developer.android.com/guide/components/fundamentals
+
+Here is Android community, in case you need help. 
+https://developer.android.com/community
+
+
+We usually use Android Studio IDE to develop our android mobile. Because it provides environment of emulator of mobile application.
+
+---
+*You can also connect to a physical Android device, turns it into developer debug mode, to connect to Android Studio emulator*
+
+No matter where you release your Android App. The ready-release APK file must being signed with your certificate (zipalign tool).
 
 ## Digital Signature
 The concept of signature is only to make sure the application customers downloaded is come from one particular entity. (e.g. Making sure your IG app is from META)
@@ -27,7 +41,15 @@ The device will decrypt stored signature by using public key inside, if the decr
 ## Build variants
 `Build Variant` is a tool in android studio. It means different version of application you can build. 
 
-In most of the mobile application, user's phone should NOT hold any of business logic. 
+It is defined in `/app/build.gradle.kt`, which is a setting feature of how you want to build your app. 
+
+There are 2 types: `Product flavor` & `Build type`.
+
+e.g. 
+- The flavor (**dev/staging/prod**) chooses which server the app talks to. 
+- The build type (**debug/release**) chooses how the code is packaged
+
+It's basically saying `Do you want salt & pepper OR soy sauce?` But you still eating fish balls. 
 
 ## What's Mobile OS?
 A piece of software manage small hardware. 
