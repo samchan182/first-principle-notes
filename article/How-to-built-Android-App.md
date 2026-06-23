@@ -11,10 +11,11 @@ Here is Android community, in case you need help.
 https://developer.android.com/community
 
 
-We usually use Android Studio IDE to develop our android mobile. Because it provides environment of emulator of mobile application.
+We usually use **Android Studio IDE** to develop our android mobile. Because it provides environment of emulator of mobile application.
 
 ---
 *You can also connect to a physical Android device, turns it into developer debug mode, to connect to Android Studio emulator*
+
 
 No matter where you release your Android App. The ready-release APK file must being signed with your certificate (zipalign tool).
 
@@ -23,7 +24,9 @@ The concept of signature is only to make sure the application customers download
 
 The first principle is the author holds the `Private Key`, the also the public holds the `Public Key`. When application published, it will being encrypted by author's private key. However, each person why public key can open it and see what's inside? Therefore, each encryption only responsible with `one-time decrypted`. Hacker can NOT decrypt the files, and sent it to someone, because the public key will NOT match. 
 
-`*Customers only make sure this APP is published by your company, no anyone else*`
+---
+*Customers only make sure this APP is published by your company, no anyone else*
+---
 
 When you need to upload you application to Google console, each APKs need to signed by author. ***You have to let Google knows is it the same author for customers to install?***. 
 
@@ -54,16 +57,17 @@ It's basically saying `Do you want salt & pepper OR soy sauce?` But you still ea
 ## What's Mobile OS?
 A piece of software manage small hardware. 
 
-THe difference between desktop OS and mobile OS, also due to the difference of its hardware. For example, the desktop has larger battery. 
+The difference between desktop OS and mobile OS, also due to the difference of its hardware. For example, the desktop has larger battery. 
 
-## What's major mobile OS?
-Android and IOS
+Two major mobile OS is *Android and IOS*
 
 ## Goal of android architecture?
 - Architecture must be consistent. No fail.
 - Divide the jobs into layers. Easy to fix bug and debug.
 - Stay open for architecture choice. Some structure might be better for one situation.
 - Simplicity over complicity.
+
+However, IOS might has similar architectural requirement as well. 
 
 ## Android Studio Scope Selector?
 In android studio, there are multiple scope selector, "Project, Android, Project File, ..etc" 
@@ -96,7 +100,7 @@ The core of Android App dev, only 3 things
 3. Get/saves data (network, database, files)
 
 ## What's MVVM?
-Google itself recommends MVVM(Model-View-ViewModel) as the official android architecture. It's the standard pattern for organizing user view (The '/presentation' layer)
+Google itself recommends *MVVM (Model-View-ViewModel)* as the official android architecture. It's the standard pattern for organizing user view (The '/presentation' layer)
 
 ![image](../images/00.png)
 
@@ -124,4 +128,22 @@ To calculate the latency of user application. There are 3 layer.
 - Second is the connections between cloud application and cache handler (spring boot + redis)
 - Third is connection between cloud application to external API provider. 
 
+## Http connection
+Http request
+
+Http methods
+
+Http content-type
+
+accessToken
+It's short-live access password. 
+Each login, it will generate new access token. 
+
+middleware regulates whether this request needs token. 
+
+refreshToekn
+
+tokenType
+
+epiresIn
 
