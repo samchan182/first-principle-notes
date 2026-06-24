@@ -25,10 +25,8 @@ The concept of signature is only to make sure the application customers download
 The first principle is the author holds the `Private Key`, the also the public holds the `Public Key`. When application published, it will being encrypted by author's private key. However, each person why public key can open it and see what's inside? Therefore, each encryption only responsible with `one-time decrypted`. Hacker can NOT decrypt the files, and sent it to someone, because the public key will NOT match. 
 
 ---
-*Customers only make sure this APP is published by your company, no anyone else*
+*Customers / Google need to make sure this APP is published by your company originally, no anyone else*
 ---
-
-When you need to upload you application to Google console, each APKs need to signed by author. ***You have to let Google knows is it the same author for customers to install?***. 
 
 In the process of signing, `apksigner` by SDK will use the built-bytecode to create a hash, this hash is the current state of source code. The `keytool` by JDK will generate private key, encrypted with your source code, stored in your local `.keystore` file, THIS IS the signature. 
 
@@ -39,6 +37,11 @@ Therefore the signed APK is combined with `signature + certificate`
 The device will decrypt stored signature by using public key inside, if the decrypted value matches the hash, then it works. 
 
 ![images](/images/09.png)
+
+## SHA-256
+It's a secure Hash algorithm 256-bit. It turns your current stage of each files and resources, into a **64 hexadecimal characters**. 
+
+When you built your apk, you need to built with your signature, which is the keystore you created, it generates the public certificate for **APP identification and API access**.
 
 
 ## Build variants
@@ -52,9 +55,11 @@ e.g.
 - The flavor (**dev/staging/prod**) chooses which server the app talks to. 
 - The build type (**debug/release**) chooses how the code is packaged
 
-It's basically saying `Do you want salt & pepper OR soy sauce?` But you still eating fish balls. 
+It's basically saying `Do you want salt & pepper OR soy sauce?` But your main dish is still fish balls. 
 
-## What's Mobile OS?
+![images](/images/10.jpg)
+
+## Mobile OS
 A piece of software manage small hardware. 
 
 The difference between desktop OS and mobile OS, also due to the difference of its hardware. For example, the desktop has larger battery. 
