@@ -58,3 +58,6 @@ Agent will widely used in production as LLM become powerful and mature.
 - using tool
 - recover from error
 
+## The API format
+unlike conventional api call and return, LLM can not generate all token return at one time. THAT why openai completion API format come out. 
+
