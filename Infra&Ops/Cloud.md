@@ -43,7 +43,7 @@ Also you control the DNS, which domain name can points to our VM ip.
 
 The last guard is the nginx, if you are not the domain name in certificate card, then you are in the wrong place. 
 
-## How to choose your machine?
+## The AWS setup
 Let's take the largest cloud provider AWS as an example (2026), they divide the world as each Region geographically.
 
 One region have multiple data center clusters running called the Available Zone (AZs). For example, `us-east-1` is the region, and `us-east-1a`,`us-east-1c`, those are available Zone. 
@@ -54,18 +54,30 @@ In most dev team, to choose which region as their cloud computer are:
 - The cost. Whether it's expensive or cheap
 - Distance. Latency, take too long to respond. 
 
-## Why using VM?
-Since the cloud provider can not actually give you the whole piece of hardware, then it gives you a software-based computers called Virtual Machines (VMs)
+## Linux on Cloud
+It's stable, open source, free to use, it can run non-stop for 24hrs. It accounts for 90% of global cloud workloads. 
 
-A cloud console is a dashboard, which can let you remote control both physical and virtual resources. 
+Most of debugging on cloud vm is through command line terminal by SSH connection. It's waste of CPU and memory to use graphic interface (Also more difficult). 
 
-## Why cloud VM only run CLI?
-Cloud usually pop you out the `web terminal`, which is the vm terminal, the linux CLI. 
+*Each cloud provider has its own doc to teach you how to config on cloud*. 
 
-In most case, it only shows command line interface (CLI), it is more efficient, it does not has to download GUI.
+`bin` holds every command you type in, like `ls`, `cd`. 
+
+`etc` holds all the configuration of how system is being setup. 
+
+There are lots of commands 
+
+For most of developer, they DO NOT write on the config file, those are Operating System Territory. You can read them, but do not write on it. 
+
+The primary workspace is /home/developer
+
+There's a abstraction and categorical name called `hypervisor`, which means the whole section to run virtual machine. It's a VM monitor. 
+
+
+
 
 ## What is SSH?
-Secure Shell(SSH), cryptographic network protocol. To secure the connection between your local and remote computer. 
+Secure Shell (SSH), cryptographic network protocol. To secure the connection between your local and remote computer. 
 
 ## Why use SSH instead of web terminal?
 - Directly edit on web terminal is fraglie to whole vm

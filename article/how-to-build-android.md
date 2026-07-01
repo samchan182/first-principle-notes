@@ -25,7 +25,7 @@ The concept of signature is only to make sure the application customers download
 The first principle is the author holds the `Private Key`, the also the public holds the `Public Key`. When application published, it will being encrypted by author's private key. However, each person why public key can open it and see what's inside? Therefore, each encryption only responsible with `one-time decrypted`. Hacker can NOT decrypt the files, and sent it to someone, because the public key will NOT match. 
 
 ---
-*Customers / Google need to make sure this APP is published by your company originally, no anyone else*
+*Customers / Google need to make sure this APP is published by the one who HOLDS private key originally, and it has NOT being modified*
 ---
 
 In the process of signing, `apksigner` by SDK will use the built-bytecode to create a hash, this hash is the current state of source code. The `keytool` by JDK will generate private key, encrypted with your source code, stored in your local `.keystore` file, THIS IS the signature. 
@@ -37,6 +37,8 @@ Therefore the signed APK is combined with `signature + certificate`
 The device will decrypt stored signature by using public key inside, if the decrypted value matches the hash, then it works. 
 
 ![images](/images/09.png)
+
+If the hash is not matched, then the installation would simply fail outright with **verification error**.
 
 ## SHA-256
 It's a secure Hash algorithm 256-bit. It turns your current stage of each files and resources, into a **64 hexadecimal characters**. 
@@ -55,9 +57,10 @@ e.g.
 - The flavor (**dev/staging/prod**) chooses which server the app talks to. 
 - The build type (**debug/release**) chooses how the code is packaged
 
-It's basically saying `Do you want salt & pepper OR soy sauce?` But your main dish is still fish balls. 
+It's basically saying `Do you want salt & pepper OR soy sauce on your FISH BALLS?` But your main dish is still fish balls. 
 
 ![images](/images/10.jpg)
+
 
 ## Mobile OS
 A piece of software manage small hardware. 
@@ -65,6 +68,8 @@ A piece of software manage small hardware.
 The difference between desktop OS and mobile OS, also due to the difference of its hardware. For example, the desktop has larger battery. 
 
 Two major mobile OS is *Android and IOS*
+
+Even some of Chinese mobile maker, like XIAOMI and HUAWEI, MIUI/HyperOS is also Android underneath. 
 
 ## Goal of android architecture?
 - Architecture must be consistent. No fail.
@@ -74,14 +79,7 @@ Two major mobile OS is *Android and IOS*
 
 However, IOS might has similar architectural requirement as well. 
 
-## Android Studio Scope Selector?
-In android studio, there are multiple scope selector, "Project, Android, Project File, ..etc" 
-
-They all refer to the same folder, but showing a different lens/view to developer for specific jobs. 
-
-If you need to code on kotlin, better using Android View. If you need to check the file structure, better using Project View. 
-
-## What's three parts in macro-layer of Android?
+## Architecture by Google
 1. `presentation/` — anything the user sees or touches (Activities, Fragments, Dialogs, ViewModels)
 2. `domain/` — pure business logic, no Android imports, no network code (use cases, agent orchestration rules)
 3. `data/` — how data is fetched and stored (HTTP clients, databases, API definitions, parsers)
@@ -120,7 +118,8 @@ The files
 2. The ViewModel(IndexViewModel.kt), the bridge between you presenting UI, and backend database
 3. The State (AssetUiState.kt),defining the boundaries and rules of screen
 
-## The API Quality
+## Your UI  Backend
+If you download an mobile app for 200mb, it only means how much code and bundles ships to your mobile (client-side). 
 
 
 access token(JWT), which is only holding 3 parts:
@@ -152,3 +151,26 @@ tokenType
 
 epiresIn
 
+## 32 or 64?
+It's the configuration of mobile CPU. It means the cpu can only take 32 bit of data in one single operation. 
+
+Because machine code is only constructed by 1 and 0, it need to operate by CPU, but it can only guess what kind of cpu that user use. 
+
+Since Kotlin code will be compiled into bytecode in advance, stored in `classes.dex`, set of instruction user's phone can understand. It's not neither 32 or 64
+
+It's like a English Menu, you can sent it to each restaurant for them to make it. BUT the facility of each restaurant is different. 
+
+---
+*You can analysis your APK on Android Studio after you built, if there's no `lib` file, that's totally fine with this problem*
+
+
+## How to publish an APP?
+If you have a signed apk/abb file with a developer account on Google Play Store, that's already enough for publish an APP. 
+
+If for Chinese mobile maker, the job is ALL about business registration. (Like xiaonmi and huawei)
+
+
+## MObile storage allocation
+On server side, redis lives in RAM. It's not the permanent storage like mySQL. 
+
+On client side, the storage setting on mobile is to save the data after the APP is being killed. 

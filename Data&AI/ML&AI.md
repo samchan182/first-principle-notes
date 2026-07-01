@@ -80,14 +80,7 @@ Total token spending is the SUM of input & output token in each loop. (cache hit
 
 e.g. LIke OpenClaw usage, When asking API call, the input not only your prompt, including your configuration file data, OpenClaw will keep asking again and again. 
 
-## What's Cache MISS and Cache HIT token?
-They all applies to INPUT token. 
 
-Cache MISS = input tokens DeepSeek's server has never seen before in this exact position at the start of a request. (The new token being generated in each loop, and ready to sent back to the next loop as new input)
-
-Cache HIT = input tokens that match a prefix DeepSeek already processed in a recent earlier request. (for cache HIT, model hasn't seen it before, then it's much more expensive in cost)
-
-For server, main difference is whether the server still remembers data. 
 
 ## Claude code OR openclaw?
 Claude Code lives inside a terminal session. Close the terminal → Claude Code dies.
@@ -231,7 +224,7 @@ The LLM then generates the final answer based on both its pretrained knowledge a
 
 tech stack: LangChain + Chroma
 
-## What is the callback in RAG?s
+## What is the callback in RAG?
 A callback is a function or hook to execute automatically during the retrieve. 
 
 It let you track, log, or modify what happened inside the RAG process without rewriting the whole pipeline. 
