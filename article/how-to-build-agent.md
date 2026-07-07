@@ -1,5 +1,5 @@
 ## Rise of LLM
-There's one research paper comes out from Google, which introduce the artificial neural network architecture, the **Transformer**. 
+There's one research paper comes out from Google, it's the subfield of Machine Learning, which introduce the artificial neural network architecture, the **Transformer**. 
 
 After, it's widely used to train LLM, in which text is converted to numerical representations called **tokens**, and each token is converted into a vector via lookup from a word embedding table. 
 
