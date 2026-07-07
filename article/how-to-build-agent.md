@@ -70,9 +70,9 @@ As the first marker leader,
 - human preference
 - YOUR OWN PROMPT   
 
-Answer-key method. The most straight forward is rate of correctness (%) of given questions. For example, how many `1+1=2` LLM can answer correctly. 
+**Answer-key method**. The most straight forward is rate of correctness (%) of given questions. For example, how many `1+1=2` LLM can answer correctly. 
 
-Human judgement. blind test is giving to human being to judge each model's result. For example such benchmarking platform like `Chatbot Arena`. 
+**Human judgement**. blind test is giving to human being to judge each model's result. For example such benchmarking platform like `Chatbot Arena`. 
 
 Some benchmarks:
 
@@ -96,4 +96,6 @@ With 1 million context windows, is it mean that we don't need RAG?
 - 1 million context windows is not enough for large database. If the database is over 100gb, it can not fit into the each context windows. 
 - Token spending. Your key info will be cache hit of each loop, as long as it feed the LLM each time, the cost of token fee is massive. 
 - more context, illusion arise of LLM. 
+
+The core principle is to let your embedding model to find your related info in database, to combine to your prompt, sending them to LLM altogether. 
 

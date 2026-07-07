@@ -118,14 +118,31 @@ The files
 2. The ViewModel(IndexViewModel.kt), the bridge between you presenting UI, and backend database
 3. The State (AssetUiState.kt),defining the boundaries and rules of screen
 
-## Your UI  Backend
-If you download an mobile app for 200mb, it only means how much code and bundles ships to your mobile (client-side). 
+## Mobile <-> BackEnd
+The SIZE. If you download an mobile app for 200mb, it only means how much code and bundles ships to your mobile (client-side). 
+
+The download package only need to contain all the bundles that client need to use. 
+
+The connection between both entities mostly is RESTful api connection. JSON Web Token, which's the **entire software industry standard** to securely transfer info as a JSON object.
+- Header 
+- Payload
+- Signature
+
+https://www.geeksforgeeks.org/web-tech/json-web-token-jwt/
+
+How JWT works (client - server)
+
+e.g. BackEnd is Spring Boot
+1. When user login password is verified, Spring BOot will generate a JWT,and sent it back to user mobile. 
+2. Once the APP save it, for every request to protected API route, it will carry JWT as header. 
+3. Server side will extract token, and verify its cryptographic signature. 
+
+*BUT the JWT will expire right?*
+
+SO there will be a **Refresh Token Rotation**, when client-side detect the HTTP error code (401 unauthorized) form server-side, then it will generate new auth-token. 
 
 
-access token(JWT), which is only holding 3 parts:
-- Identity
-- Role/permissions
-- Time Limits
+
 
 To calculate the latency of user application. There are 3 layer. 
 - First is connection between user terminal device and user's connected router. 
