@@ -99,3 +99,13 @@ With 1 million context windows, is it mean that we don't need RAG?
 
 The core principle is to let your embedding model to find your related info in database, to combine to your prompt, sending them to LLM altogether. 
 
+
+## LLM
+
+The **Wire Format**, which is specific structured data protocol, to regulate the input to LLM. The market is following those two conventions:
+
+- OpenAI Chat completion wire format
+- Anthropic message wire format
+
+
+
