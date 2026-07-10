@@ -191,3 +191,57 @@ If for Chinese mobile maker, the job is ALL about business registration. (Like x
 On server side, redis lives in RAM. It's not the permanent storage like mySQL. 
 
 On client side, the storage setting on mobile is to save the data after the APP is being killed. 
+
+# j
+On WeChat server side
+
+local keystore file -- 32-character hash -- 微信公众平台's signature 
+
+your app package name + signature = appID
+
+put the appID inside your application through the format of WeChat Pay SDK 
+
+WeChat only need to know whether it is the real app is calling or fake app is calling, since the appID is public. 
+
+Application makes the call -- WeChat check appID -- WeChat check the bundled merchant id -- put the payment money from user account to merchant account.
+
+
+
+The payment request is being sent by the app's server side (spring boot)
+
+request
+- merchant id
+- appID
+- outer trade number (out_trade_no) (each payment carries a unique key)
+- amount (8 usd)
+
+All signed with merchant private key, and sent to WeChat pay API through HTTPS
+
+WeChat Pay check, then authorized, returns prepay_id. (The request has approved, now start to pay)
+
+server do the signing again, then back to mobile application
+
+the installed WeChat SDK, which has installed in your application, call the 微信 on user's phone
+
+微信 check the sign again, and od the match on 'signature' and 'fingerprint'
+
+After both check, money move from user's wallet to merchant wallet. 
+
+# things
+
+you need
+- merchant id (business license, public account)
+- app id (package name + local keystore)
+
+WeChat need to make sure the app user's paying for is from your company
+
+when spring boot send order, you need
+- merchant private key
+
+WeChat need to confirm the request is from your spring boot (Your App's server), it is not protecting the connection, the connection is protecting by HTTPS/SSL, the key only sign and confirm the order is from our APP
+
+when user mobile receive prepay_id, then after paid the order, you need
+- V3 key
+
+WeChat encrypt the payment result, it does the callback (HTTP POST) to your spring boot, you use v3 key decrypt the hidden content
+
