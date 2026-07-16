@@ -1,7 +1,20 @@
 [← Back to README](../README.md)
 
-# Path (APP pay)
+# The ledger
+Both account / wallet is all run by WeChat Pay team, it's a simple adding and subtracting method for each account. 
+
+For example:
+- account A paid 5 dollar (count -= 5;)
+- account B received 5 dollar (count += 5;)
+
+That is, might be it's not the exact same code, but with identical meaning. From WeChat Pay Wallet to Central Bank of England, it's all the same principle behind. 
+
+What WeChat Pay setting do, is to know **You're the correct Payer** and **You're the correct Payee**.
+
 The principle of 'Money Transfer' is basically a signal to change the ledgers between two database (subtracting from Acct. A and adding in Acct. B). 
+
+# Path (APP pay)
+APP Pay is one of the features provided by WeChat Pay team. 
 
 Connections between 3 components:
 - User mobile Application (local)
@@ -29,9 +42,10 @@ The WeChat SDK is Tencent's tool, to help you talk to WeChat App.
 So what the doc is telling you is how to follow the key and how to 'follow the rule to talk to WeChat App'.
 
 
-# Hardest Part
+# The Security
 WeChat needs to know, whether the payment request comes from real merchant, not anyone else. 
 
 The core is WeChat Pay server needs to confirm the people who pay and the people who receive the pay is the correct one. That's why there's so many secures on online payment. 
 
 For example, Some hacker maybe fake the 'payment successfully' signal to WeChat Pay server. 
+

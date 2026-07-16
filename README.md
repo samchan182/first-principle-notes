@@ -20,8 +20,10 @@ Same idea applies to First Principle Thinking. It reasons everything up from the
 - [Web Development](CS/WebDev.md)
 
 ### Agent
-- [How to build personal agentic system](../agent\how-to-build-agent.md)
+- [How to build personal agentic system](agent/how-to-build-agent.md)
 
 ### Quantitative Finance
-- [How to make your own quant system](../quant\how-to-quant.md)
+- [How to make your own quant system](quant/how-to-quant.md)
 
+### Business
+- [SaaS](business\how-to-build-saas.md)
