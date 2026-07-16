@@ -11,3 +11,4 @@ So they make money by creating the physical advantage, not digit (things like AP
 
 Those companies make profit by the little cents of spread, and by doing this millions times per day. Someone offers 100 to sell, you buy it, and someone offers 100.02 to buy, and you give it to them. 
 
+The final overall is if you don't have the hardware facility to catch the spread, JUST GIVE UP. 
