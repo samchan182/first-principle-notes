@@ -14,7 +14,7 @@ Same idea applies to First Principle Thinking. It reasons everything up from the
 - [System Architecture](CS/systemArchitect.md)
 - [Database](CS/Database.md)
 - [AI](CS/AI.md)
-- [Cloud](CS\Cloud.md)
+- [Cloud](CS/Cloud.md)
 - [DevOps](CS/DevOps.md)
 - [OS](CS/OS.md)
 - [Web Development](CS/WebDev.md)
