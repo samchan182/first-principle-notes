@@ -2,9 +2,9 @@
 
 Whole instructions page
 
-[How to build an Android App](/article/How-to-built-Android-App.md)
+[How to build an Android App](Mobile\how-to-build-android.md)
 
-
+[How to implement WeChat Pay](Mobile\how-to-WeChatPay.md)
 
 ## Which file is blueprint for OS in Android APP?
 The system will read the `AndroidManifest.xml` first, it's the root of app's package, without this file, the OS has no idea of what app's contains, and how to run. 

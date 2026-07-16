@@ -8,16 +8,16 @@ Same idea applies to First Principle Thinking. It reasons everything up from the
 <div align="center"><small>Source: AI generated, better understanding</small></div>
 
 ### Computer Science
-- [FrontEnd](SoftwareEng/FrontEnd.md)
-- [BackEnd](SoftwareEng/BackEnd.md)
-- [Mobile](SoftwareEng/Mobile.md)
-- [System Architecture](SoftwareEng/systemArchitect.md)
-- [Database](SoftwareEng/Database.md)
-- [AI](SoftwareEng/AI.md)
-- [Cloud](SoftwareEng\Cloud.md)
-- [DevOps](SoftwareEng/DevOps.md)
-- [OS](SoftwareEng/OS.md)
-- [Web Development](SoftwareEng/WebDev.md)
+- [FrontEnd](CS/FrontEnd.md)
+- [BackEnd](CS/BackEnd.md)
+- [Mobile](CS/Mobile.md)
+- [System Architecture](CS/systemArchitect.md)
+- [Database](CS/Database.md)
+- [AI](CS/AI.md)
+- [Cloud](CS\Cloud.md)
+- [DevOps](CS/DevOps.md)
+- [OS](CS/OS.md)
+- [Web Development](CS/WebDev.md)
 
 ### Agent
 - [How to build personal agentic system](agent\how-to-build-agent.md)
