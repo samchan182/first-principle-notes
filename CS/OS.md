@@ -1,5 +1,7 @@
 # OS
 
+[← Back to README](../README.md)
+
 ## Why we need computer?
 
 Human hardware is so insufficient and slow. 
