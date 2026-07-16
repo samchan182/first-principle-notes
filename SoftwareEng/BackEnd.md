@@ -1,5 +1,10 @@
 # Backend-Dev
 
+Since backend dev job has the highest demand in this industry. 
+
+## The Six role families
+![image](../images/02.png)
+
 ## What’s Backend?
 The fundamental truth of BackEnd is, it is just a continuous running loop application, to handle the local hardware, and networking both layers. 
 

@@ -1,5 +1,21 @@
 # OS
 
+## Why we need computer?
+
+Human hardware is so insufficient and slow. 
+
+Human being are so weak in computing and memory. For example, if we need to calculate `199 X 577`, we need at least 30 second to solve, but for computer, it only takes 3ms.
+
+## Why computer has to be binary?
+
+Cause it is the reliable way to run computation by electricity in physics. 
+
+Of cause, there is computer using Ternary, but it is unstable. 
+
+The hardware is reliable on billions of transistors
+- Current is on, means 1
+- Current is off, means 0
+
 ## What's license?
 A legal document, the declaration of the ownership. 
 
