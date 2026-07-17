@@ -125,12 +125,10 @@ The SIZE. If you download an mobile app for 200mb, it only means how much code a
 
 The download package only need to contain all the bundles that client need to use. 
 
-The connection between both entities mostly is RESTful api connection. JSON Web Token, which's the **entire software industry standard** to securely transfer info as a JSON object.
+The connection between both entities mostly is RESTful api connection. [JSON Web Token](https://www.geeksforgeeks.org/web-tech/json-web-token-jwt/), which's the **entire software industry standard** to securely transfer info as a JSON object.
 - Header 
 - Payload
 - Signature
-
-https://www.geeksforgeeks.org/web-tech/json-web-token-jwt/
 
 How JWT works (client - server)
 
@@ -247,3 +245,42 @@ when user mobile receive prepay_id, then after paid the order, you need
 
 WeChat encrypt the payment result, it does the callback (HTTP POST) to your spring boot, you use v3 key decrypt the hidden content
 
+
+# Version Name / code
+They both for keeping track of app updates. 
+
+- versionCode, secret number, for computer & App Store.
+- versionName, readable label, visible to user.
+
+The versionCode only matters in installation. It has nothing to do with runtime. The only job is install-time comparison.
+
+For versionName, it's human-facing string. Tell user APP has been updated. (e.g. from 1.0.1 to 1.0.2). It's free-text label with zero enforcement. 
+
+Git tag, it's a label on particular git commit, a static bookmark on git log. 
+
+github release is the deployment of whole package, a tag + whole metadata. 
+
+convention on versionName:
+`MAJOR.MINOR.PATCH`, e.g. 2.4.1 (breadthrough changes. new features. new fixed bugs)
+
+
+
+
+
+# The Update
+Application internal update is by replacing the packages inside. It's a principle behind the APP deployment. 
+
+The structure of package is frozen, immutable infrastructure, an operational model, unchanged structure after deploy. 
+
+While the package structure is fixed, and unchangeable, but the whole package can be swapped. 
+
+That's why new features deployed without user click `update` in App Store / user action. 
+
+Application only updates by comparing the difference between current mobile version code, and latest version code on backend server. That's the reason why the version code is for computer and mobile app. 
+
+![images](/images/ScreenShot_2026-07-17_145532_166.png)
+
+
+?????? learn this
+
+The Privilege Transfer: To solve this boundary problem, the app cannot simply hand a raw file path to the phone's system installer. Instead, it utilizes the FileProvider (configured in your AndroidManifest.xml and mapped by file_paths.xml) to generate a temporary, secure access pass (a Content URI). This acts as a digital passport, granting the external Android Package Installer temporary read-only permission to access that specific file inside your app's private directory.
