@@ -284,3 +284,10 @@ Application only updates by comparing the difference between current mobile vers
 ?????? learn this
 
 The Privilege Transfer: To solve this boundary problem, the app cannot simply hand a raw file path to the phone's system installer. Instead, it utilizes the FileProvider (configured in your AndroidManifest.xml and mapped by file_paths.xml) to generate a temporary, secure access pass (a Content URI). This acts as a digital passport, granting the external Android Package Installer temporary read-only permission to access that specific file inside your app's private directory.
+
+
+For Android App, the standard pattern of auto-updating, is also use the version-manifest file, the JSON on server, plus the in-app checker. It's the same principle behind. 
+
+
+
+
