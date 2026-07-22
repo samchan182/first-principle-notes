@@ -1,6 +1,62 @@
 [← Back to README](../README.md)
 
+# User and Android App Store
+What is the Package SIZE? If you download an mobile app for 200mb, it only means how much code and bundles ships to your mobile (client-side). 
+
+The download package only need to contain all the bundles that client need to use. 
+
+Android open source foundation (AOSP) is free, and open foundation, made by Google in 2007. Since this is free and open-source, but they charge license fee from Google Mobile Services (GMS), like Play Store, Google Maps, etc. 
+
+Some Chinese mobile maker, as long as their mobile is using GMS (except for sells in mainland China), it needs to pay to Google. 
+
+BUT there're still mobile maker, they use AOSP, but they're not providing GMS, like Huawei, they're being banned by US sanction, and Amazon Fire tablets. 
+
+How Google can cutoff your GMS? 
+
+Like what happened of Huawei in 2019. For legal layer, if a mobile maker want to user GMS on their hardware, they need to sign the Mobile Application Distribution Agreement (MADA) contract with Google. That's where the preinstall Play Store come from. 
+
+For technical cutoff, each manufacturer needs to run their hardware of Google's Compatibility Test Suite, and submit its result to Google, and Google registers it as cryptographic identifier in google database. ALL the service must check this fingerprint before it works. 
+
+Read more and to check [Play Integrity](https://developer.android.com/google/play/integrity)
+
 # What We Should Know?
+With the following, is the structure of the finished knowledge. 
+
+*!!! NOT the learning roadmap !!!* 
+
+Roadmap Layer 0 (language):
+- Kotlin 
+- JVM and Android runtime
+- Memory
+
+Layer 1 (how it works):
+- The process model
+- thread and frame
+- lifecycle
+
+Layer 2 (UI):
+- recomposition
+- state hoisting and unidirectional data flow
+- the old view system
+
+Layer 3 (architecture):
+- separation of concerns
+- repository / data layer
+- dependency injection
+- modularization
+
+Layer 4 (invisible engineering):
+- testing
+- gradle building 
+- systrace / perfetto tooling
+- CI / CD
+
+Last of the skills is the data  structure and algorithm and system design. In terms of building great android application, some ideas is interconnected with IOS dev. 
+
+If you need to learn how to build it, build an ugly, complete, working app first. THEN keep building it by production standard. 
+
+
+# The language
 Android mobile app can be written by Kotlin, Java, C++. Android SDK tool will compile your code, combined with any resource into APK(.apk) / Android App Bundle(.aab). 
 
 - APK uses to install android-power devices.
@@ -120,10 +176,12 @@ The files
 2. The ViewModel(IndexViewModel.kt), the bridge between you presenting UI, and backend database
 3. The State (AssetUiState.kt),defining the boundaries and rules of screen
 
-## Mobile <-> BackEnd
-The SIZE. If you download an mobile app for 200mb, it only means how much code and bundles ships to your mobile (client-side). 
 
-The download package only need to contain all the bundles that client need to use. 
+
+
+
+## Mobile <-> BackEnd
+The HTTP connection is only responsible to transfer your data from A to B (client to server).
 
 The connection between both entities mostly is RESTful api connection. [JSON Web Token](https://www.geeksforgeeks.org/web-tech/json-web-token-jwt/), which's the **entire software industry standard** to securely transfer info as a JSON object.
 - Header 
@@ -133,7 +191,7 @@ The connection between both entities mostly is RESTful api connection. [JSON Web
 How JWT works (client - server)
 
 e.g. BackEnd is Spring Boot
-1. When user login password is verified, Spring BOot will generate a JWT,and sent it back to user mobile. 
+1. When user login password is verified, Spring Boot will generate a JWT,and sent it back to user mobile. 
 2. Once the APP save it, for every request to protected API route, it will carry JWT as header. 
 3. Server side will extract token, and verify its cryptographic signature. 
 
@@ -192,8 +250,19 @@ On server side, redis lives in RAM. It's not the permanent storage like mySQL.
 
 On client side, the storage setting on mobile is to save the data after the APP is being killed. 
 
-# j
+# WeChat Pay
 On WeChat server side
+
+https://pay.weixin.qq.com/doc/v3/merchant/4013070176
+
+you need
+- merchant id (business license, public account)
+- app id (package name + local keystore)
+- merchant certificate
+- merchant private key
+- API V3 key (V2 is daddy version)
+- public key
+- public key id
 
 local keystore file -- 32-character hash -- 微信公众平台's signature 
 
@@ -227,34 +296,55 @@ the installed WeChat SDK, which has installed in your application, call the 微�
 
 After both check, money move from user's wallet to merchant wallet. 
 
-# things
 
-you need
-- merchant id (business license, public account)
-- app id (package name + local keystore)
 
 WeChat need to make sure the app user's paying for is from your company
 
 when spring boot send order, you need
-- merchant private key
+- 
 
 WeChat need to confirm the request is from your spring boot (Your App's server), it is not protecting the connection, the connection is protecting by HTTPS/SSL, the key only sign and confirm the order is from our APP
 
 when user mobile receive prepay_id, then after paid the order, you need
-- V3 key
+
 
 WeChat encrypt the payment result, it does the callback (HTTP POST) to your spring boot, you use v3 key decrypt the hidden content
 
 
+
+
+
+# In-app Update
+When user is not downloading the APP from APP Store, it's called   `sideloading`, but most of Android user will go for APP Store.
+
+Under the setting from [Google Play Store](https://developer.android.com/guide/playcore/in-app-updates),  it has auto-update option for user, except for limitation being set by user. 
+
+IF you need to deploy an Android APP in China, it's more than one platform (XIAOMI, HUAWEI, VIVO, etc...). 
+
+Those platforms are only set the regulation on how package is being downloaded (silent installer). But for detection part, how client side need it needs update, it's universal setting. 
+
+
+![images](/images/ScreenShot_2026-07-17_145532_166.png)
+
+---
+How app is having new feature silently?
+
+
+An installed APK is immutable, its code is fixed. Updates do the wholesale replacement, download the new package, swaps it from the old one. 
+
+Application only updates by comparing the difference between current mobile version code, and latest version code on server side. That's the reason why the version code is for computer and mobile app. 
+
+For Android App, the standard pattern of auto-updating, is also use the version-manifest file, the JSON on server, plus the in-app checker. It's the same principle behind. 
+
 # Version Name / code
 They both for keeping track of app updates. 
 
-- versionCode, secret number, for computer & App Store.
-- versionName, readable label, visible to user.
+- versionCode, '*secret*' number, for computer & App Store. An increasing integer, which system uses to order release. 
+- versionName, readable label, visible to user if you display it. Unless to system, but useful to human understanding. 
 
-The versionCode only matters in installation. It has nothing to do with runtime. The only job is install-time comparison.
+The versionCode, system only enforces it in installation. It still be used in many places in APP. 
 
-For versionName, it's human-facing string. Tell user APP has been updated. (e.g. from 1.0.1 to 1.0.2). It's free-text label with zero enforcement. 
+For versionName, it's human-facing string. Tell user APP has been updated. (e.g. from 1.0.1 to 1.0.2). It's free-text label with zero enforcement (Google Play setting is different). 
 
 Git tag, it's a label on particular git commit, a static bookmark on git log. 
 
@@ -262,32 +352,3 @@ github release is the deployment of whole package, a tag + whole metadata.
 
 convention on versionName:
 `MAJOR.MINOR.PATCH`, e.g. 2.4.1 (breadthrough changes. new features. new fixed bugs)
-
-
-
-
-
-# The Update
-Application internal update is by replacing the packages inside. It's a principle behind the APP deployment. 
-
-The structure of package is frozen, immutable infrastructure, an operational model, unchanged structure after deploy. 
-
-While the package structure is fixed, and unchangeable, but the whole package can be swapped. 
-
-That's why new features deployed without user click `update` in App Store / user action. 
-
-Application only updates by comparing the difference between current mobile version code, and latest version code on backend server. That's the reason why the version code is for computer and mobile app. 
-
-![images](/images/ScreenShot_2026-07-17_145532_166.png)
-
-
-?????? learn this
-
-The Privilege Transfer: To solve this boundary problem, the app cannot simply hand a raw file path to the phone's system installer. Instead, it utilizes the FileProvider (configured in your AndroidManifest.xml and mapped by file_paths.xml) to generate a temporary, secure access pass (a Content URI). This acts as a digital passport, granting the external Android Package Installer temporary read-only permission to access that specific file inside your app's private directory.
-
-
-For Android App, the standard pattern of auto-updating, is also use the version-manifest file, the JSON on server, plus the in-app checker. It's the same principle behind. 
-
-
-
-
