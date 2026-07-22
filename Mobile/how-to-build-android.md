@@ -11,6 +11,7 @@ Some Chinese mobile maker, as long as their mobile is using GMS (except for sell
 
 BUT there're still mobile maker, they use AOSP, but they're not providing GMS, like Huawei, they're being banned by US sanction, and Amazon Fire tablets. 
 
+---
 How Google can cutoff your GMS? 
 
 Like what happened of Huawei in 2019. For legal layer, if a mobile maker want to user GMS on their hardware, they need to sign the Mobile Application Distribution Agreement (MADA) contract with Google. That's where the preinstall Play Store come from. 
@@ -53,31 +54,33 @@ Layer 4 (invisible engineering):
 
 Last of the skills is the data  structure and algorithm and system design. In terms of building great android application, some ideas is interconnected with IOS dev. 
 
-If you need to learn how to build it, build an ugly, complete, working app first. THEN keep building it by production standard. 
+If you need to learn how to [build your very first Android](https://developer.android.com/codelabs/basic-android-kotlin-compose-first-app#0), try to build an ugly, complete, working app first. THEN keep building it by production standard. 
 
+---
+Programming Language?
 
-# The language
-Android mobile app can be written by Kotlin, Java, C++. Android SDK tool will compile your code, combined with any resource into APK(.apk) / Android App Bundle(.aab). 
+Android mobile app can be written by **Kotlin, Java, C++**. Android SDK tool will compile your code, combined with any resource into APK(.apk) / Android App Bundle(.aab). 
 
 - APK uses to install android-power devices.
 - AAB refers to archive file. 
 
-Some important components of Android files in this doc. 
-https://developer.android.com/guide/components/fundamentals
+Some important [components of Android files](https://developer.android.com/guide/components/fundamentals) in this doc. 
 
-Here is Android community, in case you need help. 
-https://developer.android.com/community
+
+Here is [Android community](https://developer.android.com/community), in case you need help. 
 
 
 We usually use **Android Studio IDE** to develop our android mobile. Because it provides environment of emulator of mobile application.
 
----
 *You can also connect to a physical Android device, turns it into developer debug mode, to connect to Android Studio emulator*
 
+## Go Release
+Android has no gatekeeper in deciding who you are, if you download Chrome, there're two questions:
+- is package originally from Google?
+- is this update also from Google?
 
-No matter where you release your Android App. The ready-release APK file must being signed with your certificate (zipalign tool).
+public-key cryptography, the signature solves this problem.
 
-## Digital Signature
 The concept of signature is only to make sure the application customers downloaded is come from one particular entity. (e.g. Making sure your IG app is from META)
 
 The first principle is the author holds the `Private Key`, the also the public holds the `Public Key`. When application published, it will being encrypted by author's private key. However, each person why public key can open it and see what's inside? Therefore, each encryption only responsible with `one-time decrypted`. Hacker can NOT decrypt the files, and sent it to someone, because the public key will NOT match. 
@@ -98,10 +101,31 @@ The device will decrypt stored signature by using public key inside, if the decr
 
 If the hash is not matched, then the installation would simply fail outright with **verification error**.
 
-## SHA-256
+---
+SHA-256 function?
+
+A cryptographic hashing funcion.
+
 It's a secure Hash algorithm 256-bit. It turns your current stage of each files and resources, into a **64 hexadecimal characters**. 
 
 When you built your apk, you need to built with your signature, which is the keystore you created, it generates the public certificate for **APP identification and API access**.
+
+# Android App Store
+The core of app store, is to solve the problem of trust. **How could you let a stranger to trust this downloaded package?**
+
+More of Android-based application is downloaded through Play Store. 
+
+---
+Other than Play Store?
+Some mobile manufacturers are not using the GMS, but most of the android app is downloaded from Google Play store. 
+
+Around with [64% of global market share](https://gs.statcounter.com/android-version-market-share), second with Huawei AppGallery. 
+
+# Security
+Secrets never leave in the app. Application is only an interface of server. 
+
+Connection security
+
 
 
 ## Build variants
